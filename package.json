@@ -1,0 +1,19 @@
+{
+  "name": "memeify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.8.0",
+    "discord.js": "^13.1.0",
+    "merge-audio-buffers": "^1.0.0",
+    "node-wav": "^0.0.2",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  }
+}
