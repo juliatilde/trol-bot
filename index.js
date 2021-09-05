@@ -3,6 +3,7 @@ const { generateVideo } = require("./shitpost.js");
 const request = require("request");
 const fs = require("fs");
 const path = require('path');
+const config = require(`./config`);
 
 const tempDir = "./temp";
 
@@ -10,7 +11,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILD_MESSAGES, Intents.FLAG
 
 // invite link for orig trolbot
 // https://discord.com/api/oauth2/authorize?client_id=882394859179216896&scope=bot&permissions=3263552
-client.login(require("./token.js"));
+client.login(config.token);
 
 if (!fs.existsSync(tempDir))
     fs.mkdir(tempDir);
@@ -36,13 +37,13 @@ client.on("messageCreate", (msg) =>
     const args = msg.content.split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if (command == "trol")
+    if (command == config.prefix)
     {
         if (args[0] == "help")
         {
             const embed = new MessageEmbed()
                 .setColor("#ffffff")
-                .setTitle("trol helpy :^)")
+                .setTitle(config.prefix " helpy :^)")
                 .addFields(
                     { name: "trol", value: "uses attachment (if any)" },
                     { name: "trol <link>", value: "uses image link" },
