@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  trolbot:
+    build: .
+    volumes:
+      - ./token.js:/home/node/trol-bot/token.js
