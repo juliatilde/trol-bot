@@ -70,7 +70,7 @@ client.on("messageCreate", (msg) =>
                 if (!fs.existsSync(downloadDir))
                     fs.mkdirSync(downloadDir);
 
-                var tempFilePath = Path.join(downloadDir, `dl_${Math.floor(Math.random() * 10000).toString().padStart(4, "0")}`);
+                var tempFilePath = path.join(downloadDir, `dl_${Math.floor(Math.random() * 10000).toString().padStart(4, "0")}`);
                 request.head(file, (err, res, body) =>
                 {
                     if (err) 
