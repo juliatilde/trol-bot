@@ -5,3 +5,4 @@ services:
     build: .
     volumes:
       - ./token.js:/home/node/trol-bot/token.js
+      - ./config.js:/home/node/trol-bot/config.js
