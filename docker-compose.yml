@@ -4,5 +4,5 @@ services:
   trolbot:
     build: .
     volumes:
-      - ./token.js:/home/node/trol-bot/token.js
-      - ./config.js:/home/node/trol-bot/config.js
+      - ./token.js:/home/node/bot/token.js
+      - ./config.js:/home/node/bot/config.js
