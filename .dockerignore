@@ -1,5 +1,12 @@
+# We don't want to have Docker's build instructions inside the container, that's kindof useless.
 Dockerfile
 docker-compose.yml
+
+# We don't need need these inside of the container either.
 .git
 .cache
 .gitignore
+
+# Please configure these outside of the Docker container by using volumes.
+token.js
+config.js
