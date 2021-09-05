@@ -1,11 +1,10 @@
-FROM node:
+FROM node:latest
+
+COPY --chown=node ./src /home/node/bot
 
 USER node
+WORKDIR /home/node/bot
 
-WORKDIR /home/node
-RUN git clone https://github.com/Morphious87/trol-bot trol-bot
-
-WORKDIR /home/node/trol-bot
 RUN npm i
 
 CMD [ "node", "index.js" ]
