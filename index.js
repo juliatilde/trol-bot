@@ -43,7 +43,7 @@ client.on("messageCreate", (msg) =>
         {
             const embed = new MessageEmbed()
                 .setColor("#ffffff")
-                .setTitle(config.prefix " helpy :^)")
+                .setTitle(config.prefix + " helpy :^)")
                 .addFields(
                     { name: "trol", value: "uses attachment (if any)" },
                     { name: "trol <link>", value: "uses image link" },
