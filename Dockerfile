@@ -1,6 +1,6 @@
 FROM node:latest
 
-COPY --chown=node ./src /home/node/bot
+COPY --chown=node . /home/node/bot
 
 USER node
 WORKDIR /home/node/bot
