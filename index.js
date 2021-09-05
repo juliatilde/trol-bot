@@ -14,7 +14,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILD_MESSAGES, Intents.FLAG
 client.login(config.token);
 
 if (!fs.existsSync(tempDir))
-    fs.mkdir(tempDir);
+    fs.mkdirSync(tempDir);
 else
     fs.readdir(tempDir, (err, files) =>
     {
