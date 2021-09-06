@@ -80,7 +80,7 @@ client.on("messageCreate", (msg) =>
 					}
 					request(file).pipe(fs.createWriteStream(tempFilePath)).on('close', () =>
 					{
-						generateVideo(tempFilePath, 5).then(result =>
+						generateVideo(tempFilePath, config.video.duration).then(result =>
 							msg.channel.send({ files: [result] }).then(value =>
 								fs.promises.rm(result)
 							)

@@ -1,6 +1,7 @@
 const { createCanvas, loadImage } = require("canvas");
 const fs = require("fs");
 const path = require(`path`);
+const config = require(`./config`);
 
 const tempDir = "./temp";
 const imagesDir = "./images";
@@ -30,11 +31,7 @@ async function generateFrames (sourceImagePath, duration)
 		loadImage(sourceImagePath).then(data => sourceImage = data)
 	]);
 
-	// settings
-	const fps = 20;
-	const res = 256;
-
-	const totalFrames = fps * duration;
+	const totalFrames = config.video.framerate * duration;
 
 	// init timeline
 	let objects = [];
@@ -46,7 +43,7 @@ async function generateFrames (sourceImagePath, duration)
 		{
 			this.imageId = arg.imageId || -1;
 			this.spawnFrame = arg.spawnFrame || 0;
-			this.lifetime = fps * duration;
+			this.lifetime = config.video.framerate * duration;
 			this.pos = arg.pos || [0.5, 0.5];
 			this.scale = arg.scale || [1, 1];
 			this.pivot = arg.pivot || [0.5, 0.5];
@@ -82,7 +79,7 @@ async function generateFrames (sourceImagePath, duration)
 		obj.scale = [uniformScale + Math.random() * 0.01, uniformScale + Math.random() * 0.01];
 		obj.imageId = Math.floor(Math.random() * images.length);
 		obj.spawnFrame = Math.floor(Math.random() * totalFrames);
-		obj.lifetime = randomRange(fps * 0.25, fps * 3);
+		obj.lifetime = randomRange(config.video.framerate * 0.25, config.video.framerate * 3);
 		obj.pivot = [Math.random(), Math.random()];
 
 		if (randomChance(25))
@@ -109,7 +106,7 @@ async function generateFrames (sourceImagePath, duration)
 		const f = _f;
 		framePromises.push(async () =>
 		{
-			const canvas = createCanvas(res, res);
+			const canvas = createCanvas(config.video.resoltuion, config.video.resoltuion);
 			const ctx = canvas.getContext("2d");
 
 			// draw objects
@@ -146,8 +143,8 @@ async function generateFrames (sourceImagePath, duration)
 					}
 				}
 
-				var size = [scale[0] * res, scale[1] * res]; // size in pixels
-				var cpos = [pos[0] * res, pos[1] * res]; // center pos
+				var size = [scale[0] * config.video.resoltuion, scale[1] * config.video.resoltuion]; // size in pixels
+				var cpos = [pos[0] * config.video.resoltuion, pos[1] * config.video.resoltuion]; // center pos
 				var blpos = [cpos[0] - size[0] * object.pivot[0], cpos[1] - size[1] * object.pivot[1]] // bottom left pos
 
 				// save base canvas transform
