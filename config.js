@@ -1,4 +1,4 @@
 module.exports = {
-  prefix: `trol`,
-  token: require(`./token`)
+	prefix: `trol`,
+	token: require(`./token`)
 }
