@@ -11,7 +11,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILD_MESSAGES, Intents.FLAG
 
 // invite link for orig trolbot
 // https://discord.com/api/oauth2/authorize?client_id=882394859179216896&scope=bot&permissions=3263552
-client.login(config.token);
+client.login(config.bot.token);
 
 if (!fs.existsSync(tempDir))
 	fs.mkdirSync(tempDir);
@@ -37,13 +37,13 @@ client.on("messageCreate", (msg) =>
 	const args = msg.content.split(/ +/);
 	const command = args.shift().toLowerCase();
 
-	if (command == config.prefix)
+	if (command == config.bot.prefix)
 	{
 		if (args[0] == "help")
 		{
 			const embed = new MessageEmbed()
 				.setColor("#ffffff")
-				.setTitle(config.prefix + " helpy :^)")
+				.setTitle(config.bot.prefix + " helpy :^)")
 				.addFields(
 					{ name: "trol", value: "uses attachment (if any)" },
 					{ name: "trol <link>", value: "uses image link" },
